@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio </title>
+
+    <style>
+        html,
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+        }
+
+        main {
+            width: 51rem;
+            margin: 1rem auto;
+        }
+
+        input[type="number"],
+        button {
+            text-align: right;
+            padding: 0.5rem;
+        }
+
+        input[type="number"] {
+            width: 10rem;
+            margin-bottom: 0.5rem;
+        }
+
+        button {
+            margin-bottom: 0.5rem;
+        }
+
+        #resp {
+            padding: 0.5rem;
+            background-color: orangered;
+
+            color: white;
+            width: 50rem;
+        }
+
+        .campo {
+            color: yellow;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- Script LER/GET-->
+
+    <script>
+        function imprime(objeto) {
+            var mensagem = `
+<br>
+{
+<br>
+"<span class='campo'>id</span>": ${objeto.id},
+<br>
+"<span class='campo'>userId</span>": ${objeto.userId},
+<br>
+"<span class='campo'>title</span>": ${objeto.title},
+<br>
+"<span class='campo'>body</span>": ${objeto.body}
+<br>
+}
+<br>`
+            return mensagem;
+        }
+
+        /*Script LER/GET*/
+        async function getPostagem(id) {
+            await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json);
+                    respgetjson.innerHTML = imprime(json);
+                });
+        }
+
+        /* Script Postar/POST */ 
+        async function postPostagens() {
+            await fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({
+                    title: 'Nova Postagem',
+                    body: 'Essa é a minha mais nova postagem! :D',
+                    userId: 1,
+                }),
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json);
+                    resppostjson.innerHTML = imprime(json);
+                });
+        }
+
+        /* Script Atualizat/PATCH*/
+        async function modificarPostagens(id) {
+            await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({
+                    title: 'Essa é a modificação da minha mais nova postagem! :D',
+                }),
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json);
+                    resppatchjson.innerHTML = imprime(json);
+                });
+        }
+
+        /* Script Modificar/PUT */
+        async function atualizarPostagens() {
+            await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+                method: 'PUT',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({
+                    id: 1,
+                    title: 'Minha Mais Nova Postagem',
+                    body: 'Essa é a atualização da minha mais nova postagem! :D',
+                    userId: 1,
+                }),
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json);
+                    respputjson.innerHTML = imprime(json);
+                });
+        }
+
+        /* Script Delete*/
+        async function removerPostagem(id) {
+            await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+                method: 'DELETE',
+            });
+        }
+
+        /*Script Filtrar*/
+        async function filtrarPostagens(id) {
+            fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json);
+                    respfiltrarjson.innerHTML = imprime(json);
+                });
+        } 
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Botões-->
+    <div>
+        <main>
+            <h1>Ler</h1>
+            <input id="numero" type="number" min="1" max="200" value="1">
+            <button onclick="getPostagem(numero.value)">Buscar</button>
+
+            <h1>Postagem</h1>
+            <button onclick="postPostagens()">Enviar</button>
+
+            <h1>Atualizar</h1>
+            <input id="numero" type="number" min="1" max="200" value="1">
+            <button onclick="modificarPostagens(numero.value)">Modificar</button>
+
+            <h1>Deletar</h1>
+            <input id="numero" type="number" min="1" max="100" value="1">
+            <button onclick="removerPostagem(numero.value)">Remover</button>
+
+            <h1>Filtrar</h1>
+            <input id="usuario" type="number" min="1" max="10" value="1">
+            <button onclick="filtrarPostagens(usuario.value)">Filtrar</button>
+
+
+            <div id="resp">
+                <p class="campo">Resultado:</p>
+                <p id="respgetjson"></p>
+                <p id="resppostjson"></p>
+                <p id="resppatchjson"></p>
+                <p id="respdeletejson"></p>
+                <p id="respfiltrarjson"></p>
+            </div>
+        </main>
+
+    </div>
+</body>
+
+</html>
