@@ -46,39 +46,54 @@
             font-weight: bold;
         }
     </style>
-
-    <!-- Script LER/GET-->
-
+    
     <script>
-        function imprime(objeto) {
-            var mensagem = `
+    /*Script LER/GET*/
+        function imprimeGET(objetoGET) {
+            var mensagemGET = `
 <br>
 {
 <br>
-"<span class='campo'>id</span>": ${objeto.id},
+"<span class='campo'>id</span>": ${objetoGET.id},
 <br>
-"<span class='campo'>userId</span>": ${objeto.userId},
+"<span class='campo'>userId</span>": ${objetoGET.userId},
 <br>
-"<span class='campo'>title</span>": ${objeto.title},
+"<span class='campo'>title</span>": ${objetoGET.title},
 <br>
-"<span class='campo'>body</span>": ${objeto.body}
+"<span class='campo'>body</span>": ${objetoGET.body}
 <br>
 }
 <br>`
-            return mensagem;
+            return mensagemGET;
         }
 
-        /*Script LER/GET*/
         async function getPostagem(id) {
             await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-                .then((response) => response.json())
-                .then((json) => {
-                    console.log(json);
-                    respgetjson.innerHTML = imprime(json);
+                .then((responseGET) => responseGET.json())
+                .then((jsonGET) => {
+                    console.log(jsonGET);
+                    GETrespjson.innerHTML = imprimeGET(jsonGET);
                 });
         }
 
-        /* Script Postar/POST */ 
+        /* Script Postar/POST */
+        function imprimePOST(objetoPOST) {
+            var mensagemPOST = `
+<br>
+{
+<br>
+"<span class='campo'>id</span>": ${objetoPOST.id},
+<br>
+"<span class='campo'>userId</span>": ${objetoPOST.userId},
+<br>
+"<span class='campo'>title</span>": ${objetoPOST.title},
+<br>
+"<span class='campo'>body</span>": ${objetoPOST.body}
+<br>
+}
+<br>`
+            return mensagemPOST;
+        }
         async function postPostagens() {
             await fetch('https://jsonplaceholder.typicode.com/posts', {
                 method: 'POST',
@@ -91,14 +106,34 @@
                     userId: 1,
                 }),
             })
-                .then((response) => response.json())
+                .then((responsePOST) => responsePOST.json())
                 .then((json) => {
                     console.log(json);
-                    resppostjson.innerHTML = imprime(json);
+                    POSTrespjson.innerHTML = imprimePOST(json);
                 });
         }
 
+
         /* Script Atualizat/PATCH*/
+
+        function imprimePATCH(objetoPATCH) {
+            var mensagemPATCH = `
+<br>
+{
+<br>
+"<span class='campo'>id</span>": ${objetoPATCH.id},
+<br>
+"<span class='campo'>userId</span>": ${objetoPATCH.userId},
+<br>
+"<span class='campo'>title</span>": ${objetoPATCH.title},
+<br>
+"<span class='campo'>body</span>": ${objetoPATCH.body}
+<br>
+}
+<br>`
+            return mensagemPATCH;
+        }
+
         async function modificarPostagens(id) {
             await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
                 method: 'PATCH',
@@ -109,14 +144,33 @@
                     title: 'Essa é a modificação da minha mais nova postagem! :D',
                 }),
             })
-                .then((response) => response.json())
+                .then((responsePATCH) => responsePATCH.json())
                 .then((json) => {
                     console.log(json);
-                    resppatchjson.innerHTML = imprime(json);
+                    PATCHrespjson.innerHTML = imprimePATCH(json);
                 });
         }
 
         /* Script Modificar/PUT */
+
+        function imprimePUT(objetoPUT) {
+            var mensagemPUT = `
+<br>
+{
+<br>
+"<span class='campo'>id</span>": ${objetoPUT.id},
+<br>
+"<span class='campo'>userId</span>": ${objetoPUT.userId},
+<br>
+"<span class='campo'>title</span>": ${objetoPUT.title},
+<br>
+"<span class='campo'>body</span>": ${objetoPUT.body}
+<br>
+}
+<br>`
+            return mensagemPUT;
+        }
+
         async function atualizarPostagens() {
             await fetch('https://jsonplaceholder.typicode.com/posts/1', {
                 method: 'PUT',
@@ -130,14 +184,33 @@
                     userId: 1,
                 }),
             })
-                .then((response) => response.json())
+                .then((responsePUT) => responsePUT.json())
                 .then((json) => {
                     console.log(json);
-                    respputjson.innerHTML = imprime(json);
+                    PUTrespjson.innerHTML = imprimePUT(json);
                 });
         }
 
         /* Script Delete*/
+
+        function imprimeDELETE(objetoDELETE) {
+            var mensagemDELETE = `
+<br>
+{
+<br>
+"<span class='campo'>id</span>": ${objetoDELETE.id},
+<br>
+"<span class='campo'>userId</span>": ${objetoDELETE.userId},
+<br>
+"<span class='campo'>title</span>": ${objetoDELETE.title},
+<br>
+"<span class='campo'>body</span>": ${objetoDELETE.body}
+<br>
+}
+<br>`
+            return mensagemDELETE;
+        }
+
         async function removerPostagem(id) {
             await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
                 method: 'DELETE',
@@ -145,12 +218,31 @@
         }
 
         /*Script Filtrar*/
+        
+        function imprimeFILTRAR(objetoFILTRAR) {
+            var mensagemFILTRAR = `
+<br>
+{
+<br>
+"<span class='campo'>id</span>": ${objetoFILTRAR.id},
+<br>
+"<span class='campo'>userId</span>": ${objetoFILTRAR.userId},
+<br>
+"<span class='campo'>title</span>": ${objetoFILTRAR.title},
+<br>
+"<span class='campo'>body</span>": ${objetoFILTRAR.body}
+<br>
+}
+<br>`
+            return mensagemFILTRAR;
+        }
+
         async function filtrarPostagens(id) {
             fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
-                .then((response) => response.json())
+                .then((responseFILTRO) => responseFILTRO.json())
                 .then((json) => {
                     console.log(json);
-                    respfiltrarjson.innerHTML = imprime(json);
+                    FILTRARrespjson.innerHTML = imprimeFILTRAR(json);
                 });
         } 
     </script>
@@ -184,11 +276,11 @@
 
             <div id="resp">
                 <p class="campo">Resultado:</p>
-                <p id="respgetjson"></p>
-                <p id="resppostjson"></p>
-                <p id="resppatchjson"></p>
-                <p id="respdeletejson"></p>
-                <p id="respfiltrarjson"></p>
+                <p id="GETrespjson"></p>
+                <p id="POSTrespjson"></p>
+                <p id="PATCHrespjson"></p>
+                <p id="DELETErespjson"></p>
+                <p id="FILTRARrespjson"></p>
             </div>
         </main>
 
