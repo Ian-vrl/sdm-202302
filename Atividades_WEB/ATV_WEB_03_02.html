@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<!--  Busca Apenas 1 elemento na API  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,25 +16,15 @@
             margin: 1rem auto;
         }
 
-        input[type="number"],
         button {
             text-align: right;
             padding: 0.5rem;
-        }
-
-        input[type="number"] {
-            width: 10rem;
-            margin-bottom: 0.5rem;
-        }
-
-        button {
             margin-bottom: 0.5rem;
         }
 
         #resp {
             padding: 0.5rem;
             background-color: orangered;
-
             color: white;
             width: 50rem;
         }
@@ -47,24 +36,39 @@
     </style>
     <script>
         function imprime(objeto) {
-            var mensagem = `
-<br>
+            var mensagem;
+            objeto.forEach(function (obj) {
+                mensagem += `
+                <br>
 {
 <br>
-"<span class='campo'>id</span>": ${objeto.id},
+"<span class='campo'>cep</span>": ${obj.cep},
 <br>
-"<span class='campo'>userId</span>": ${objeto.userId},
+"<span class='campo'>logradouro</span>": ${obj.logradouro},
 <br>
-"<span class='campo'>title</span>": ${objeto.title},
+"<span class='campo'>complemento</span>": ${obj.complemento},
 <br>
-"<span class='campo'>body</span>": ${objeto.body}
+"<span class='campo'>bairro</span>": ${obj.bairro}
+<br>
+"<span class='campo'>localidade</span>": ${obj.localidade}
+<br>
+"<span class='campo'>uf</span>": ${obj.uf}
+<br>
+"<span class='campo'>ibge</span>": ${obj.ibge}
+<br>
+"<span class='campo'>gia</span>": ${obj.gia}
+<br>
+"<span class='campo'>ddd</span>": ${obj.ddd}
+<br>
+"<span class='campo'>siafi</span>": ${obj.siafi}
 <br>
 }
 <br>`
+            });
             return mensagem;
         }
-        async function getPostagem(id) {
-            await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        async function getPostagens() {
+            await fetch(`viacep.com.br/ws/01001000/json/`)
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
@@ -77,14 +81,13 @@
 <body>
     <main>
         <h1>Postagens</h1>
-        <input id="numero" type="number" min="1" max="100" value="1">
-        <button onclick="getPostagem(numero.value)">Buscar</button>
-
+        <button onclick="getPostagens()">Buscar</button>
         <div id="resp">
             <p class="campo">Resposta:</p>
             <p id="respjson"></p>
         </div>
     </main>
+
 </body>
 
 </html>
