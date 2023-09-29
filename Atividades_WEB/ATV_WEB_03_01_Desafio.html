@@ -25,8 +25,9 @@
         }
 
         input[type="number"] {
-            width: 10rem;
+            width: 48.9rem;
             margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         button {
@@ -34,37 +35,37 @@
         }
 
         #resp {
-            padding: 0.5rem;
-            background-color: orangered;
+            padding: 7rem;
+            background-color: grey;
 
             color: white;
-            width: 50rem;
+            width: 36rem;
         }
 
         .campo {
-            color: yellow;
+            color: black;
             font-weight: bold;
+            
         }
     </style>
-    
+
     <script>
-    /*Script LER/GET*/
-        function imprimeGET(objetoGET) {
-            var mensagemGET = `
+        function imprime(objeto) {
+            var mensagem = `
 <br>
 {
 <br>
-"<span class='campo'>id</span>": ${objetoGET.id},
+"<span class='campo'>id</span>": ${objeto.id},
 <br>
-"<span class='campo'>userId</span>": ${objetoGET.userId},
+"<span class='campo'>userId</span>": ${objeto.userId},
 <br>
-"<span class='campo'>title</span>": ${objetoGET.title},
+"<span class='campo'>title</span>": ${objeto.title},
 <br>
-"<span class='campo'>body</span>": ${objetoGET.body}
+"<span class='campo'>body</span>": ${objeto.body}
 <br>
 }
 <br>`
-            return mensagemGET;
+            return mensagem;
         }
 
         async function getPostagem(id) {
@@ -72,28 +73,10 @@
                 .then((responseGET) => responseGET.json())
                 .then((jsonGET) => {
                     console.log(jsonGET);
-                    GETrespjson.innerHTML = imprimeGET(jsonGET);
+                    resp.innerHTML = imprime(jsonGET);
                 });
         }
 
-        /* Script Postar/POST */
-        function imprimePOST(objetoPOST) {
-            var mensagemPOST = `
-<br>
-{
-<br>
-"<span class='campo'>id</span>": ${objetoPOST.id},
-<br>
-"<span class='campo'>userId</span>": ${objetoPOST.userId},
-<br>
-"<span class='campo'>title</span>": ${objetoPOST.title},
-<br>
-"<span class='campo'>body</span>": ${objetoPOST.body}
-<br>
-}
-<br>`
-            return mensagemPOST;
-        }
         async function postPostagens() {
             await fetch('https://jsonplaceholder.typicode.com/posts', {
                 method: 'POST',
@@ -109,29 +92,8 @@
                 .then((responsePOST) => responsePOST.json())
                 .then((json) => {
                     console.log(json);
-                    POSTrespjson.innerHTML = imprimePOST(json);
+                    resp.innerHTML = imprime(json);
                 });
-        }
-
-
-        /* Script Atualizat/PATCH*/
-
-        function imprimePATCH(objetoPATCH) {
-            var mensagemPATCH = `
-<br>
-{
-<br>
-"<span class='campo'>id</span>": ${objetoPATCH.id},
-<br>
-"<span class='campo'>userId</span>": ${objetoPATCH.userId},
-<br>
-"<span class='campo'>title</span>": ${objetoPATCH.title},
-<br>
-"<span class='campo'>body</span>": ${objetoPATCH.body}
-<br>
-}
-<br>`
-            return mensagemPATCH;
         }
 
         async function modificarPostagens(id) {
@@ -147,28 +109,8 @@
                 .then((responsePATCH) => responsePATCH.json())
                 .then((json) => {
                     console.log(json);
-                    PATCHrespjson.innerHTML = imprimePATCH(json);
+                    resp.innerHTML = imprime(json);
                 });
-        }
-
-        /* Script Modificar/PUT */
-
-        function imprimePUT(objetoPUT) {
-            var mensagemPUT = `
-<br>
-{
-<br>
-"<span class='campo'>id</span>": ${objetoPUT.id},
-<br>
-"<span class='campo'>userId</span>": ${objetoPUT.userId},
-<br>
-"<span class='campo'>title</span>": ${objetoPUT.title},
-<br>
-"<span class='campo'>body</span>": ${objetoPUT.body}
-<br>
-}
-<br>`
-            return mensagemPUT;
         }
 
         async function atualizarPostagens() {
@@ -187,54 +129,15 @@
                 .then((responsePUT) => responsePUT.json())
                 .then((json) => {
                     console.log(json);
-                    PUTrespjson.innerHTML = imprimePUT(json);
+                    resp.innerHTML = imprime(json);
                 });
-        }
-
-        /* Script Delete*/
-
-        function imprimeDELETE(objetoDELETE) {
-            var mensagemDELETE = `
-<br>
-{
-<br>
-"<span class='campo'>id</span>": ${objetoDELETE.id},
-<br>
-"<span class='campo'>userId</span>": ${objetoDELETE.userId},
-<br>
-"<span class='campo'>title</span>": ${objetoDELETE.title},
-<br>
-"<span class='campo'>body</span>": ${objetoDELETE.body}
-<br>
-}
-<br>`
-            return mensagemDELETE;
         }
 
         async function removerPostagem(id) {
             await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
                 method: 'DELETE',
             });
-        }
-
-        /*Script Filtrar*/
-        
-        function imprimeFILTRAR(objetoFILTRAR) {
-            var mensagemFILTRAR = `
-<br>
-{
-<br>
-"<span class='campo'>id</span>": ${objetoFILTRAR.id},
-<br>
-"<span class='campo'>userId</span>": ${objetoFILTRAR.userId},
-<br>
-"<span class='campo'>title</span>": ${objetoFILTRAR.title},
-<br>
-"<span class='campo'>body</span>": ${objetoFILTRAR.body}
-<br>
-}
-<br>`
-            return mensagemFILTRAR;
+            resp.innerHTML('Remoção executada! Verificar no servidor!');
         }
 
         async function filtrarPostagens(id) {
@@ -242,7 +145,7 @@
                 .then((responseFILTRO) => responseFILTRO.json())
                 .then((json) => {
                     console.log(json);
-                    FILTRARrespjson.innerHTML = imprimeFILTRAR(json);
+                    resp.innerHTML = imprime(json);
                 });
         } 
     </script>
@@ -254,36 +157,22 @@
     <!-- Botões-->
     <div>
         <main>
-            <h1>Ler</h1>
-            <input id="numero" type="number" min="1" max="200" value="1">
-            <button onclick="getPostagem(numero.value)">Buscar</button>
+            <h1>Postagens</h1>
 
-            <h1>Postagem</h1>
-            <button onclick="postPostagens()">Enviar</button>
+            <input id="numero" type="number" min="1" max="200" value="1"><br>
+            <button onclick="getPostagem(numero.value)">Buscar Usuário</button>
+            <button onclick="getPostagens(numero.value)">Buscar Usuários</button>
+            <button onclick="postPostagens()">Adicionar Usuário</button>
+            <button onclick="modificarPostagens(numero.value)">Alterar Usuário</button>
+            <button onclick="removerPostagem(numero.value)">Remover Usuário</button>
 
-            <h1>Atualizar</h1>
-            <input id="numero" type="number" min="1" max="200" value="1">
-            <button onclick="modificarPostagens(numero.value)">Modificar</button>
+            <button onclick="filtrarPostagens(numero.value)">Filtrar Postagens por Usuário</button>
 
-            <h1>Deletar</h1>
-            <input id="numero" type="number" min="1" max="100" value="1">
-            <button onclick="removerPostagem(numero.value)">Remover</button>
-
-            <h1>Filtrar</h1>
-            <input id="usuario" type="number" min="1" max="10" value="1">
-            <button onclick="filtrarPostagens(usuario.value)">Filtrar</button>
-
-
-            <div id="resp">
+            <div id="painel_de_resposta">
                 <p class="campo">Resultado:</p>
-                <p id="GETrespjson"></p>
-                <p id="POSTrespjson"></p>
-                <p id="PATCHrespjson"></p>
-                <p id="DELETErespjson"></p>
-                <p id="FILTRARrespjson"></p>
+                <p id="resp"></p>
             </div>
         </main>
-
     </div>
 </body>
 
