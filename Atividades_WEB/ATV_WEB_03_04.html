@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<!--  Busca Apenas todos os  elemento na API  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questao 2</title>
+    <title>fetch</title>
     <style>
         html,
         body {
@@ -36,36 +37,22 @@
     </style>
     <script>
         function imprime(objeto) {
-            var mensagem= `
+            var mensagem;
+            objeto.forEach(function (obj) {
+                mensagem += `
 <br>
 {
 <br>
-"<span class='campo'>cep</span>": ${objeto.cep},
+"<span class='campo'>response_code</span>": ${obj.response_code},
 <br>
-"<span class='campo'>logradouro</span>": ${objeto.logradouro},
-<br>
-"<span class='campo'>complemento</span>": ${objeto.complemento},
-<br>
-"<span class='campo'>bairro</span>": ${objeto.bairro},
-<br>
-"<span class='campo'>localidade</span>": ${objeto.localidade},
-<br>
-"<span class='campo'>uf</span>": ${objeto.uf},
-<br>
-"<span class='campo'>ibge</span>": ${objeto.ibge},
-<br>
-"<span class='campo'>gia</span>": ${objeto.gia},
-<br>
-"<span class='campo'>ddd</span>": ${objeto.ddd},
-<br>
-"<span class='campo'>siafi</span>": ${objeto.siafi}
-<br>
-}
+"<span class='campo'>results</span>": ${obj.results},
+},
 <br>`
+            });
             return mensagem;
         }
         async function getPostagens() {
-            await fetch(`viacep.com.br/ws/01001000/json/}`)
+            await fetch(`https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple`)
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);

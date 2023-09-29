@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questao 2</title>
+    <title>Questao 3</title>
     <style>
         html,
         body {
@@ -16,15 +16,25 @@
             margin: 1rem auto;
         }
 
+        input[type="number"],
         button {
             text-align: right;
             padding: 0.5rem;
+        }
+
+        input[type="number"] {
+            width: 10rem;
+            margin-bottom: 0.5rem;
+        }
+
+        button {
             margin-bottom: 0.5rem;
         }
 
         #resp {
             padding: 0.5rem;
             background-color: orangered;
+
             color: white;
             width: 50rem;
         }
@@ -36,36 +46,34 @@
     </style>
     <script>
         function imprime(objeto) {
-            var mensagem= `
+            var mensagem = `
 <br>
 {
 <br>
-"<span class='campo'>cep</span>": ${objeto.cep},
+"<span class='campo'>id</span>": ${objeto.id},
 <br>
-"<span class='campo'>logradouro</span>": ${objeto.logradouro},
+"<span class='campo'>description</span>": ${objeto.description},
 <br>
-"<span class='campo'>complemento</span>": ${objeto.complemento},
+"<span class='campo'>title</span>": ${objeto.title},
 <br>
-"<span class='campo'>bairro</span>": ${objeto.bairro},
+"<span class='campo'>price</span>": ${objeto.price},
 <br>
-"<span class='campo'>localidade</span>": ${objeto.localidade},
+"<span class='campo'>discountPercentage</span>": ${objeto.discountPercentage},
 <br>
-"<span class='campo'>uf</span>": ${objeto.uf},
+"<span class='campo'>stock</span>": ${objeto.stock},
 <br>
-"<span class='campo'>ibge</span>": ${objeto.ibge},
+"<span class='campo'>brand</span>": ${objeto.brand},
 <br>
-"<span class='campo'>gia</span>": ${objeto.gia},
+"<span class='campo'>category</span>": ${objeto.category},
 <br>
-"<span class='campo'>ddd</span>": ${objeto.ddd},
-<br>
-"<span class='campo'>siafi</span>": ${objeto.siafi}
+"<span class='campo'>thumbnail</span>": ${objeto.thumbnail}
 <br>
 }
 <br>`
             return mensagem;
         }
-        async function getPostagens() {
-            await fetch(`viacep.com.br/ws/01001000/json/}`)
+        async function getPostagem(id) {
+            await fetch(`https://dummyjson.com/products/${id}`)
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
@@ -74,17 +82,16 @@
         }
     </script>
 </head>
-
 <body>
     <main>
         <h1>Postagens</h1>
-        <button onclick="getPostagens()">Buscar</button>
+        <input id="numero" type="number" min="1" max="100" value="1">
+        <button onclick="getPostagem(numero.value)">Buscar</button>
+
         <div id="resp">
             <p class="campo">Resposta:</p>
             <p id="respjson"></p>
         </div>
     </main>
-
 </body>
-
 </html>
