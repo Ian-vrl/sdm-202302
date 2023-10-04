@@ -1,0 +1,77 @@
+header{
+    text-align: center; 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+    color: white;
+}
+
+#navegador{
+    text-align: center;
+    background-color: black; 
+    color: #f1f1f1;
+    padding: 0; 
+    letter-spacing: 1px;
+    font-family: Arial;
+    font-size: 0;
+    top: 70px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+#navegador a{
+    display: inline-block;
+    width: auto;
+    margin: 0!important;
+    padding: 5px 15px 5px 15px;
+    font-size: 15px!important;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+a{
+    color: inherit;
+}
+
+a:hover{
+    color: #0093B3;
+}
+
+footer{
+    padding: 2rem;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#Arte{
+    font-family: Arial;
+    background-image: linear-gradient(to top, #ffb1bc 70%, #ff4760 100%);
+    height: 100vh;
+    overflow: auto;
+}
+
+#TextoArte{
+    padding-top: 2rem;
+    padding-bottom: 12rem;
+    background-image: linear-gradient(to top, #ffb1bc 82%, #ff4760 100%);
+    text-align: center;
+    border: 5px solid black;
+}
+
+#tituloArte{
+    color: black;
+}
+
+#resumoArte{
+    text-align: left;
+    padding-left: 15px;
+    font-size: 20px;
+}
+
+#Cultura{
+    font-family: Arial;
+    background-image: linear-gradient(to top, #c79970 70%, #ff8519 100%);
+    height: 100vh;
+    overflow: auto;
+}
+
