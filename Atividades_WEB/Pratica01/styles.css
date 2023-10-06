@@ -1,15 +1,15 @@
-header{
-    text-align: center; 
+header {
+    text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: larger;
-    color: white;
+    color: #F2EFFF;
 }
 
-#navegador{
+#navegador {
     text-align: center;
-    background-color: black; 
-    color: #f1f1f1;
-    padding: 0; 
+    background-color: black;
+    color: #F2EFFF;
+    padding: 0;
     letter-spacing: 1px;
     font-family: Arial;
     font-size: 0;
@@ -19,59 +19,170 @@ header{
     overflow: auto;
 }
 
-#navegador a{
+#navegador a {
     display: inline-block;
     width: auto;
-    margin: 0!important;
+    margin: 0 !important;
     padding: 5px 15px 5px 15px;
-    font-size: 15px!important;
+    font-size: 15px !important;
     text-decoration: none;
     line-height: 1.5;
+
 }
 
-a{
+a {
     color: inherit;
 }
 
-a:hover{
+a:hover {
     color: #0093B3;
 }
 
-footer{
+footer {
     padding: 2rem;
     margin-top: 20px;
     text-align: center;
 }
 
-#Arte{
+img {
+    height: 40rem;
+    width: 50rem;
+}
+
+
+#Arte {
     font-family: Arial;
-    background-image: linear-gradient(to top, #ffb1bc 70%, #ff4760 100%);
+    background-image: linear-gradient(to top, #F29BAB 70%, #F24B99 100%);
     height: 100vh;
     overflow: auto;
 }
 
-#TextoArte{
+#TextoArte {
     padding-top: 2rem;
     padding-bottom: 12rem;
-    background-image: linear-gradient(to top, #ffb1bc 82%, #ff4760 100%);
+    background-image: linear-gradient(to top, #F29BAB 82%, #F24B99 100%);
     text-align: center;
     border: 5px solid black;
 }
 
-#tituloArte{
+#tituloArte {
     color: black;
 }
 
-#resumoArte{
+#resumoArte {
     text-align: left;
     padding-left: 15px;
     font-size: 20px;
+    color: #51476A;
 }
 
-#Cultura{
+
+
+#Cultura {
     font-family: Arial;
-    background-image: linear-gradient(to top, #c79970 70%, #ff8519 100%);
+    background-image: linear-gradient(to top, #F7CD82 70%, #F79E6B 100%);
     height: 100vh;
     overflow: auto;
 }
 
+#TextoCultura {
+    padding-top: 2rem;
+    padding-bottom: 12rem;
+    background-image: linear-gradient(to top, #F7CD82 82%, #F79E6B 100%);
+    text-align: center;
+    border: 5px solid black;
+}
+
+#TituloCultura{
+    color: black;
+}
+
+#ResumoCultura{
+    text-align: left;
+    padding-left: 15px;
+    font-size: 20px;
+    color: #4B4941;
+}
+
+
+
+#Ambiente{
+    font-family: Arial;
+    background-image: linear-gradient(to top, #A2D9A0 70%, #0F4001 100%);
+    height: 100vh;
+    overflow: auto;
+}
+
+#TextoAmbiente{
+    padding-top: 2rem;
+    padding-bottom: 12rem;
+    background-image: linear-gradient(to top, #A2D9A0 82%, #0F4001 100%);
+    text-align: center;
+    border: 5px solid black;
+}
+
+#TituloAmbiente{
+    color: black;
+}
+
+#ResumoAmbiente{
+    text-align: left;
+    padding-left: 15px;
+    font-size: 20px;
+    color: #022601;
+}
+
+
+#Ciencia{
+    font-family: Arial;
+    background-image: linear-gradient(to top, #29A7D9 70%, #155FBF 100%);
+    height: 110vh;
+    overflow: auto;
+}
+
+#TextoCiencia{
+    padding-top: 2rem;
+    padding-bottom: 12rem;
+    background-image: linear-gradient(to top, #29A7D9 82%, #155FBF 100%);
+    text-align: center;
+    border: 5px solid black;
+}
+
+#TituloCiencia{
+    color: black;
+}
+
+#ResumoCiencia{
+    text-align: left;
+    padding-left: 15px;
+    font-size: 20px;
+    color: #24013F;
+}
+
+
+
+#Saude{
+    font-family: Arial;
+    background-image: linear-gradient(to top, #E08A8F 70%, #A8302D 100%);
+    height: 110vh;
+    overflow: auto;
+}
+
+#TextoSaude{
+    padding-top: 2rem;
+    padding-bottom: 12rem;
+    background-image: linear-gradient(to top, #E08A8F 82%, #A8302D 100%);
+    text-align: center;
+    border: 5px solid black;
+}
+
+#TituloSaude{
+    color: black;
+}
+
+#ResumoSaude{
+    text-align: left;
+    padding-left: 15px;
+    font-size: 20px;
+    color: #520010;
+}
